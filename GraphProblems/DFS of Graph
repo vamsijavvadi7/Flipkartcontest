@@ -1,0 +1,41 @@
+class Solution
+{ 
+    private boolean visited[];
+    private ArrayList<Integer> l;
+    public ArrayList<Integer> dfsOfGraph(int V, ArrayList<ArrayList<Integer>> adj)
+    {
+         l=new ArrayList<Integer>();
+        visited=new boolean[V+1];
+        visited[0]=true;
+        l.add(0);
+       
+        for(int i=0;i<adj.size();i++){
+          for(int j=0;j<adj.get(i).size();j++)  
+             {
+                 if(!visited[adj.get(i).get(j)]) 
+                 { 
+                    
+                     dfs(adj,adj.get(i).get(j));
+                 }
+                 
+             }
+             
+        }
+       
+        
+        return l;
+        
+    }
+    
+    
+    public void dfs(ArrayList<ArrayList<Integer>> adj,Integer s){
+        visited[s]=true;
+        l.add(s);
+        for(Integer i:adj.get(s)){
+            if(!visited[i])
+            dfs(adj,i);
+        }
+        
+        
+    }
+}
