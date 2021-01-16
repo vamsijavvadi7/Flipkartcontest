@@ -1,0 +1,62 @@
+
+class Solution{
+     public int x[]={1,0,-1,0};
+    public int y[]={0,1,0,-1};
+     public int helpaterp(int[][] hospital) {
+         LinkedList<Node> q=new LinkedList<>();
+        int l=0,mi=0;
+        for(int i=0;i<hospital.length;i++){
+              for(int j=0;j<hospital[0].length;j++){
+                  if(hospital[i][j]==2)
+                  {
+                      q.add(new Node(i,j));
+                  }
+                  if(hospital[i][j]==1)
+                      l=1;
+              }  
+        }
+        
+    if(l==0)
+        return 0;
+        while(q.size()!=0){
+            int si=q.size();
+            mi++;
+            for(int i=0;i<si;i++){
+                Node p=q.poll();
+            int r=p.i;
+            int c=p.j;
+            for(int k=0;k<4;k++){
+                  
+        if( r+x[k]>=0 &c+y[k]>=0 &&r+x[k]<hospital.length && c+y[k]<hospital[0].length && hospital[r+x[k]][c+y[k]]==1)
+       {
+          hospital[r+x[k]][c+y[k]]=2;
+          q.add(new Node(r+x[k],c+y[k]));
+       } 
+                
+                
+    }
+                
+  }
+}
+        
+    for(int i=0;i<hospital.length;i++){
+              for(int j=0;j<hospital[0].length;j++){
+                  if(hospital[i][j]==1)
+                  {
+                    return -1;
+                  }
+              }  
+        }
+      
+    return mi-1;
+    }
+}
+
+class Node{
+    
+    int i,j;
+    Node(int i,int j){
+        this.i=i;
+        this.j=j;
+    }
+}
