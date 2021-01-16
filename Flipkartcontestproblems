@@ -1,4 +1,4 @@
-Rearrange the Digits:
+Rearrange the Digits(Python):
 
 def smallestnum(self,N):
         l=list(str(N))
@@ -8,7 +8,7 @@ def smallestnum(self,N):
  
  
  
-Mics & Jury:
+Mics & Jury(java):
 
 static int micsandjury(int N,int M,int[] teams){
          int l = 1;
@@ -45,7 +45,7 @@ static int micsandjury(int N,int M,int[] teams){
     }
     
     
- Maximum Sum Component:
+ Maximum Sum Component(java):
     
    class Solution{
     private int parent[];
@@ -108,4 +108,47 @@ long solve(int V,int E,int[] Values,int[][] Edges){
         
     }
 }
+
+
+
+Wave Array (Python):
+
+
+class Solution:
+    def convertToWave(self, arr, N):
+        i=0
+        while(i<N-1):
+            t=arr[i]
+            arr[i]=arr[i+1]
+            arr[i+1]=t
+            i+=2
+
+
+Strange Matrix(Python):
+
+class Solution:
+    
+    def get(self, i, j):
+      return a.get(i,j)
+
+
+
+    def solve(self,r,c):
+        
+        maxi=0
+        j=-1
+        for i in range(c):
+            if(self.get(0,i)==1):
+                j=i
+                break
+        if(j==-1):
+            j=c-1
+        for i in range(r):
+            while(j>=0 and self.get(i,j)==1):
+                j-=1
+                maxi=i
+            
+            
+           
+        return maxi
 
