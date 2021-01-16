@@ -1,0 +1,45 @@
+class Solution{
+    public int isPairPresent(Node root, int target){
+        if(root==null)
+        return 0;
+       
+        
+  
+  
+ 
+        ArrayList<Integer> a=convertIntoList(root,new ArrayList<>()); 
+  
+        int start=0; 
+  
+        int end=a.size()-1; 
+  
+        while (start<end) { 
+            if(a.get(start)+a.get(end)==target) 
+            return 1; 
+            
+  
+            if (a.get(start)+a.get(end)>target)  
+            end--; 
+  
+            if (a.get(start)+a.get(end)<target)
+            start++; 
+        } 
+  
+       
+        return 0; 
+    } 
+        
+        
+    
+    public ArrayList<Integer>  convertIntoList(Node root,ArrayList<Integer> list){
+        
+        if(root==null)
+        return list;
+        convertIntoList(root.left,list);
+        list.add(root.data);
+        convertIntoList(root.right,list);
+        
+     return list;   
+        
+    }
+}
