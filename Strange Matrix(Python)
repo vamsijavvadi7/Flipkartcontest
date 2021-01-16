@@ -1,0 +1,25 @@
+class Solution:
+    
+    def get(self, i, j):
+      return a.get(i,j)
+
+
+
+    def solve(self,r,c):
+        
+        maxi=0
+        j=-1
+        for i in range(c):
+            if(self.get(0,i)==1):
+                j=i
+                break
+        if(j==-1):
+            j=c-1
+        for i in range(r):
+            while(j>=0 and self.get(i,j)==1):
+                j-=1
+                maxi=i
+            
+            
+           
+        return maxi
