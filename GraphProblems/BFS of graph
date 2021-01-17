@@ -1,0 +1,33 @@
+
+class Solution
+{
+    public ArrayList<Integer> bfsOfGraph(int V, ArrayList<ArrayList<Integer>> adj)
+    {
+    LinkedList<Integer> q=new LinkedList<Integer>();
+    boolean visited[]=new boolean[V];
+    q.add(0);
+     ArrayList<Integer> res=new ArrayList<Integer>(); 
+    visited[0]=true;
+    res.add(0);
+   
+    while(q.size()!=0){
+        int size=q.size();
+        for(int i=0;i<size;i++){
+            int node=q.removeFirst();
+            for(Integer neighbours:adj.get(node))
+            {
+                if(!visited[neighbours])
+                {
+                    visited[neighbours]=true;
+                    res.add(neighbours);
+                    q.add(neighbours);
+                }
+            }
+        }
+        
+        
+        
+    }
+    return res;
+    
+    }
