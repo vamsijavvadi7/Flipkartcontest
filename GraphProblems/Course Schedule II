@@ -1,0 +1,57 @@
+class Solution {
+    private boolean [] visited;
+    private boolean[] ancestors;
+    private ArrayList<ArrayList<Integer>> adj;
+    private Stack<Integer> st;
+  
+    public int[] findOrder(int numCourses, int[][] prerequisites) {
+        int []res=new int[numCourses];
+        visited=new boolean[numCourses];
+        ancestors=new boolean[numCourses];
+        st=new Stack<Integer>();
+
+        adj=new ArrayList<ArrayList<Integer>>();
+       
+       for(int i=0;i<numCourses;i++)
+            adj.add(new ArrayList<Integer>());
+       for(int i=0;i<prerequisites.length;i++){
+           adj.get(prerequisites[i][1]).add(prerequisites[i][0]);
+           }
+         for(int i=0;i<numCourses;i++){
+             if(!visited[i]){
+                 
+                 
+                 if(!cyclePresent(i))
+                     return new int[0];
+             }
+             
+         }
+        
+        for(int i=0;i<numCourses;i++){
+       res[i]=st.pop();       
+        }
+        
+        return res;
+    }
+    public boolean cyclePresent(int start){
+        ancestors[start]=true;
+        visited[start]=true;
+        boolean res=true;
+        for(Integer k:adj.get(start)){
+            if(ancestors[k])
+            {
+                
+                return false;
+                
+            }
+            if(!visited[k])
+                res=cyclePresent(k);
+            if(!res)
+                return res;
+        
+        }
+        ancestors[start]=false;
+        st.push(start);
+        return res;
+    }
+}
