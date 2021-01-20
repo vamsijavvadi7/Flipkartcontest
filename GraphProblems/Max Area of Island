@@ -1,0 +1,35 @@
+class Solution {
+    public int x[]={1,0,-1,0};
+    public int y[]={0,1,0,-1};
+    public int l=0;
+    public int maxAreaOfIsland(int[][] g) {
+        int h=0;
+        for(int i=0;i<g.length;i++){
+              for(int j=0;j<g[0].length;j++){
+                  if(g[i][j]==1)
+                  {
+                      dfs(g,i,j);
+                      
+                      if(l>h)
+                          h=l;
+                      l=0;
+                  }
+              }  
+        }
+    return h;
+    }
+public void dfs(int[][] g,int i,int j){
+g[i][j]=2;
+    l+=1;
+    int n=g.length;
+    int m=g[0].length;
+    int h=0;
+for(int k=0;k<4;k++){
+if( i+x[k]>=0 &j+y[k]>=0 &&i+x[k]<n && j+y[k]<m &&g[i+x[k]][j+y[k]]==1)
+ {
+    dfs(g,i+x[k],j+y[k]);
+}     
+}
+ 
+}
+}
