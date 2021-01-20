@@ -1,0 +1,14 @@
+class Solution {
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        if(root==null)
+            return null;
+        if(root==p || root==q)
+            return root;
+        TreeNode leftFind=lowestCommonAncestor(root.left,p,q);
+        TreeNode rightFind=lowestCommonAncestor(root.right,p,q);
+        if(leftFind!=null && rightFind!=null)
+            return root;
+        
+        return leftFind!=null?leftFind:rightFind;
+    }
+}
