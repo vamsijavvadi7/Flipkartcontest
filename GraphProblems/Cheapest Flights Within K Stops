@@ -1,0 +1,70 @@
+class Solution {
+    public static class Pair{
+        int city,cost;
+        Pair(int city,int cost){
+            this.city=city;
+            this.cost=cost;
+        }
+        
+        
+    }
+    
+    public static class City{
+    int city,distance,totalCost;
+        City(int city,int distance,int totalCost){
+            this.city=city;
+            this.distance=distance;
+            this.totalCost=totalCost;
+        }
+        
+        
+    
+    }
+    
+    
+    
+    
+    public int findCheapestPrice(int n, int[][] flights, int src, int dst, int K) {
+     
+        if(n<=0 || flights.length==0|| K<0 ||flights == null)
+            return -1;
+        
+        ArrayList<ArrayList<Pair>> adj=new ArrayList<>();
+        for(int i=0;i<n;i++)
+            adj.add(new ArrayList<>());
+        for(int i=0;i<flights.length;i++)
+            adj.get(flights[i][0]).add(new Pair(flights[i][1],flights[i][2]));
+        
+          
+        PriorityQueue<City> pq=new PriorityQueue<>((City c1,City c2) -> c1.totalCost - c2.totalCost);    
+            
+        pq.offer(new City(src,0,0));
+         
+                                                   
+    while(pq.size()!=0){
+         
+          City top=pq.poll();
+            
+        if(top.city==dst)
+            return top.totalCost;
+         if(top.distance>K)
+            continue;
+        
+        for(Pair p:adj.get(top.city))
+        {
+           
+            pq.offer(new City(p.city,top.distance+1,top.totalCost+p.cost));
+            
+        }
+             
+             
+             
+             
+         }                                          
+            
+        return -1;
+        
+        
+      }
+}
+                                                   
