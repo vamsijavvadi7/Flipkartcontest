@@ -1,0 +1,23 @@
+class Solution {
+    public void flatten(TreeNode root) {
+        if(root==null)
+            return;
+        flater(root,null);
+        
+
+        
+    }
+    public TreeNode flater(TreeNode root,TreeNode prev)
+    {
+        if(root==null)
+            return prev;
+        prev=flater(root.right,prev);
+        prev=flater(root.left,prev);
+        
+        root.right=prev;
+        root.left=null;
+        return root;
+        
+        
+    }
+}
