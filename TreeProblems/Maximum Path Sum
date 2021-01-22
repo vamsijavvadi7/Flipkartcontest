@@ -1,0 +1,35 @@
+class Solution {
+   public int res;
+    public int maxPathSum(TreeNode root) {
+        
+        res=-10000000;
+        
+         maxSum(root);
+    return res;    
+    }
+    public int maxSum(TreeNode root){
+        int leftVal=-1000000,rightVal=-1000000;
+
+        if(root.left!=null){
+            
+            leftVal=maxSum(root.left);
+            
+        }
+        if(root.right!=null){
+            
+            rightVal=maxSum(root.right);
+        }
+        
+        int max=Math.max(root.val,root.val+leftVal);
+        max=Math.max(max,root.val+rightVal);
+        res=Math.max(leftVal+rightVal+root.val,res);
+        res=Math.max(res,max);
+        return max;
+        
+        
+        
+        
+    }
+    
+    
+}
